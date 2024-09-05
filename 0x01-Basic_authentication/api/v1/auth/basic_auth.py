@@ -2,6 +2,7 @@
 """File contains class BasicAuth"""
 
 from api.v1.auth.auth import Auth
+import base64
 
 
 class BasicAuth(Auth):
@@ -28,7 +29,7 @@ class BasicAuth(Auth):
             return None
 
         try:
-            decoded_str = base64_authorization_header.encode('utf-8')
-            return decoded_str.decode('utf-8')
+            decoded_str = base64.b64decode(base64_authorization_header).decode('utf-8')
+            return decoded_str
         except Exception:
             return None
