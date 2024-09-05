@@ -17,10 +17,11 @@ CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 auth = None
 auth_type = os.environ.get('AUTH_TYPE')
 
-if auth_type == 'basic_auth':
-    auth = BasicAuth()
-else:
-    auth = Auth()
+if auth_type:
+    if auth_type == 'BasicAuth':
+        auth = BasicAuth()
+    else:
+        auth = Auth()
 
 paths_list = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
 
