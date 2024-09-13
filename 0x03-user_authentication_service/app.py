@@ -16,7 +16,7 @@ def home():
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users():
+def users() -> str:
     """Register a user"""
     if request and request.is_json:
         data = request.json()
