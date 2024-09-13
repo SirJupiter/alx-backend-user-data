@@ -19,10 +19,8 @@ def home():
 def users() -> str:
     """Register a user"""
     if request and request.is_json:
-        data = request.json()
-
-        email = data.get('email')
-        password = data.get('password')
+        email = request.form.get('email')
+        password = request.form.get('password')
 
         try:
             user = AUTH.register_user(email, password)
